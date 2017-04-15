@@ -1,0 +1,6 @@
+FROM nginx
+
+RUN sed -i 's/include \/etc\/nginx\/conf\.d\/\*\.conf/include \/etc\/nginx\/conf\.d\/\*http\.conf/g' /etc/nginx/nginx.conf && \
+    echo "stream {" >> /etc/nginx/nginx.conf && \
+    echo "    include /etc/nginx/conf.d/*stream.conf;" >> /etc/nginx/nginx.conf && \
+    echo "}" >> /etc/nginx/nginx.conf
