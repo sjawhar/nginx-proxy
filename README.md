@@ -108,14 +108,7 @@ than a socket and expose that port.
 
 ### Streaming Backends
 
-Using the [ngx_stream_core_module](https://nginx.org/en/docs/stream/ngx_stream_core_module.html), Nginx supports proxying to non-http backends. To do so, set the `VIRTUAL_STREAM` environment variable to either `true` or `secure` and specify a `VIRTUAL_PROTO`, if needed. Using `VIRTUAL_STREAM=secure` will pass the `ssl` option to the `listen` directive. Specifying a value for `VIRTUAL_PROTO` will set the scheme. For example, setting `VIRTUAL_HOST=database`, `VIRTUAL_STREAM=true`, and `VIRTUAL_PROTO=mongodb` results in a server block that looks like
-```
-server {
-  ...
-  proxy_pass mongodb://backend
-  ...
-}
-```
+Using the [ngx_stream_core_module](https://nginx.org/en/docs/stream/ngx_stream_core_module.html), Nginx supports proxying to non-http backends. To do so, set the `VIRTUAL_STREAM` environment variable to either `true` or `secure`. Using `VIRTUAL_STREAM=secure` will pass the `ssl` option to the `listen` directive.  Using `VIRTUAL_PROTO=udp` will apss the `udp` options to the `listen` directive. Using `VIRTUAL_PROTO=unix` will create a unix socket connection.
 
 ### Default Host
 
